@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #navbar{
+            height:70px;
+            position:relative;
+        }
+        #TopBar{
+            overflow: hidden;
+            background-color: #ffc56e;
+            position: relative;
+            top: 0px;
+            width: 100%;
+            height:100%;
+            padding:0px;
+            /* opacity:0%; */
+            /* background-color:orange; */
+            /* display:flex; */
+            /* align-items: flex-start; */
+        }
+        #overlay{
+            background-color: none;
+            z-index:1;
+            height:100%;
+            /* left:60%; */
+            width:100%;
+            top:35%;
+            position:absolute;
+        }
+        .overlayButton{
+            float:right;
+            background-color:none;
+            background: none;
+            font-size: 20px;
+            width:auto;
+            border:none;
+            margin-right:1%;
+
+        }
+        .overlayButton a{
+            color:white;
+            font-weight:bold;
+            text-decoration: none;
+            text-shadow:1px 1px black;
+        }
+        .overlayButton a:visited{
+            color:white;
+            font-weight:bold;
+            text-decoration: none;
+            text-shadow:1px 1px black;
+        }
+        body{
+            padding : 0px;
+            margin:0px;
+        }
+        .Line {
+            margin:0px;
+            width: 50px;
+            display: inline-block;
+            vertical-align:top;
+            height: 2px;
+            left:0px;
+            background-color: #ffde4f;
+            position: relative;
+            animation-fill-mode: forwards;
+            animation: moveLine 5s linear infinite;
+            opacity:75%;
+        }
+
+        @keyframes moveLine {
+            /* 0% {
+                left: 0px;
+            } */
+            100% {
+                transform:translatex(100vw);
+                /* left :calc(100% - 50px); */
+            }
+        }
+        #bio{
+            width:100%;
+            height:80vh;
+            margin:0px;
+            padding:0px;
+        }
+        #bioLeft{
+            background-color:blue;
+            width:40%;
+            height:100%;
+            margin:0px;
+            border:0px;
+            /* position:absolute; */
+            float:left;
+        }
+        #bioRight{
+            background-color:purple;
+            width:60%;
+            height:100%;
+            margin:0px;
+            border:0px;
+            float:left;
+            
+        }
+        @media screen and (max-width: 800px) {
+            #bioRight{
+                width:100%;
+            }
+            #bioLeft{
+                width:0%;
+            }
+            .overlayButton{
+                width:100%;
+            }
+            #navbar{
+                height:150px;
+            }
+            #overlay{
+                top:10%;
+            }
+            .overlayButton{
+                margin: 0.5% 0.5% 0.5% 0.5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="TopBar">
+            
+        </div>
+        <nav id="overlay">
+            <button class="overlayButton"><a href="#" >Skills</a></button>
+            <button class="overlayButton"><a href="#" >Projects</a></button>
+            <button class="overlayButton"><a href="#" >Social Media</a></button>
+            <button class="overlayButton"><a href="#" >About Me</a></button>
+        </nav>
+        <div id="bio"> 
+            <div id="bioLeft"></div>
+            <div id="bioRight">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore, corrupti voluptas facere aliquam eaque explicabo velit aliquid deserunt ipsum harum, cumque, amet eos adipisci molestias modi. Cum adipisci fuga dolor!
+            </div>
+        </div>
+    </div>
+    <!-- <div id="checker">asa</div> -->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            function moving_lines()
+            {
+                const lineContainer = document.getElementById('TopBar');
+                lineContainer.innerHTML='';
+                // alert(lineContainer.clientHeight);
+                for(var j=0;j<lineContainer.clientHeight/10;j++)
+                {
+                    var x=Math.random(0,1)*10
+                    for( var i=0;i<25;i++)
+                    {
+                        const line = document.createElement('div');
+                        // line.innerText="dslmdms";
+                        line.classList.add('Line');
+                        line.style.left=-100+4*i+x+"%";
+                        line.style.top=j*4+"px";
+                        // line.style.right=10*i+10+"%";
+                        // line.style.animationDelay=i*0.3+"s";
+                        lineContainer.appendChild(line);
+                    }
+                }
+                setTimeout(function(){moving_lines()},30000);
+            }          
+            moving_lines();  
+            // console.log(document.getElementById('TopBar'));
+        });
+    </script>
+</body>
+</html>
