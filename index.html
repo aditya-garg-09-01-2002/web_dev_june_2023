@@ -3,10 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bio.css">
+    <link rel="stylesheet" href="skills.css">
+    <link rel="stylesheet" href="topBar.css">
+    <link rel="stylesheet" href="project.css">
     <style>
+        #projects{
+            box-sizing: border-box;
+            padding:10vh 10vw 10vh 10vw;
+            height:auto;
+            width:100%;
+            background-color: black;
+        }
+        .project{
+            width:100%;
+            height:25vw;
+        }
+        .projectLeft{
+            background-color:none;
+            width:50%;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            color:white;
+            height:100%;
+            float:left;
+        }
+        .projectRight{
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            background-color: transparent;
+            float:left;
+            width:50%;
+            height:100%;
+        }
+        .placard{
+            box-sizing: border-box;
+            border:3px solid white;
+            width:80%;
+            height:80%;
+            border-radius: 5%;  
+            transition: transform 0.3s;
+        }
+        .placardExpanded {
+        transform: scale(1.2);
+        z-index: 2;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        border:5px;
+        border-radius: 10%;
+        transition:transform 0.3s;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80vh;
+        overflow: auto;
+        backdrop-filter: opacity(100%);
+        }
+        .overlay2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index:1;
+        width: 99vw;
+        height: 99vh;
+        background-color: rgba(0, 0, 0,0.7); /* Semi-transparent overlay color */
+        pointer-events: none; /* Allow interaction with underlying elements */
+        }
+        
         #navbar{
             height:70px;
-            position:relative;
+            position:fixed;
         }
         #TopBar{
             overflow: hidden;
@@ -69,7 +137,6 @@
             animation: moveLine 5s linear infinite;
             opacity:75%;
         }
-
         @keyframes moveLine {
             /* 0% {
                 left: 0px;
@@ -77,6 +144,66 @@
             100% {
                 transform:translatex(100vw);
                 /* left :calc(100% - 50px); */
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .overlayButton{
+                width:100%;
+            }
+            #navbar{
+                height:150px;
+            }
+            #overlay{
+                top:10%;
+            }
+            .overlayButton{
+                margin: 0.5% 0.5% 0.5% 0.5%;
+            }
+        }
+        #skills{
+            width:100%;
+            margin:0px;
+            background-color: navy;
+            /* color:white; */
+            height:auto;
+            box-sizing:border-box;
+            padding:20vh 20vw 20vh 20vw;
+        }
+        #skillsRight{
+            background-color:transparent;
+            width:60%;
+            height:100%;
+            margin:0px;
+            border:0px;
+            float:left;
+            
+        }
+        #skillsLeft{
+            background-color:transparent;
+            width:40%;
+            height:100%;
+            margin:0px;
+            border:0px;
+            color:white;
+            /* position:absolute; */
+            float:left;
+        }
+        @media screen and (max-width:800px)
+        {
+            #skillsLeft{
+                display:flex;
+                justify-content:center;
+                align-items: center;
+                width:100%;
+                height:150px;
+                float:none;
+            }
+            #skillsRight{
+                width:100%;
+                height:auto;
+                padding:10px;
+                box-sizing:border-box
             }
         }
         #bio{
@@ -95,7 +222,7 @@
             float:left;
         }
         #bioRight{
-            background-color:purple;
+            background-color:white;
             width:60%;
             height:100%;
             margin:0px;
@@ -103,48 +230,72 @@
             float:left;
             
         }
-        @media screen and (max-width: 800px) {
+        #bioContent{
+            display:flex;
+            align-items: center;
+            height:100%;
+            width:100%;
+            text-align: center;
+        }
+        @media screen and (max-width:800px)
+        {
             #bioRight{
                 width:100%;
             }
             #bioLeft{
                 width:0%;
             }
-            .overlayButton{
-                width:100%;
-            }
-            #navbar{
-                height:150px;
-            }
-            #overlay{
-                top:10%;
-            }
-            .overlayButton{
-                margin: 0.5% 0.5% 0.5% 0.5%;
-            }
         }
     </style>
 </head>
 <body>
+    <div id="overlay2"></div>
     <div id="navbar">
         <div id="TopBar">
             
         </div>
         <nav id="overlay">
-            <button class="overlayButton"><a href="#" >Skills</a></button>
-            <button class="overlayButton"><a href="#" >Projects</a></button>
-            <button class="overlayButton"><a href="#" >Social Media</a></button>
             <button class="overlayButton"><a href="#" >About Me</a></button>
+            <button class="overlayButton"><a href="#" >Social Media</a></button>
+            <button class="overlayButton"><a href="#" >Projects</a></button>
+            <button class="overlayButton"><a href="#" >Skills</a></button>
         </nav>
-        <div id="bio"> 
-            <div id="bioLeft"></div>
-            <div id="bioRight">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore, corrupti voluptas facere aliquam eaque explicabo velit aliquid deserunt ipsum harum, cumque, amet eos adipisci molestias modi. Cum adipisci fuga dolor!
+    </div>
+    <div id="bio"> 
+        <div id="bioLeft"></div>
+        <div id="bioRight">
+            <div id = "bioContent">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio esse sapiente, eaque laboriosam voluptates eligendi minus enim expedita porro exercitationem eius omnis cum nulla adipisci quasi ipsum impedit atque commodi!
             </div>
         </div>
     </div>
-    <!-- <div id="checker">asa</div> -->
+    <div id="skills">
+        <div id="skillsLeft">Skills</div>
+        <div id="skillsRight">
+        </div>
+    </div>
+    <div id="projects">
+        <div class="project">
+            <div class="projectLeft">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor adipisci iure nulla accusamus, cumque culpa sequi, eos totam necessitatibus dicta libero deserunt consequuntur expedita. Impedit, sed accusamus. Pariatur, soluta 
+            </div>
+            <div class="projectRight" onmouseenter="fun1()">
+                <iframe src="https://www.youtube.com/embed/gQdrBmnemHY?rel=0" allowfullscreen class="placard"  onmouseleave="fun2()"></iframe>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
+        function fun1()
+        {
+            document.getElementsByClassName('placard')[0].classList.add('placardExpanded');
+            var x=document.getElementById('overlay2');
+            x.classList.add("overlay2");
+        }
+        function fun2()
+        {
+            document.getElementsByClassName('placard')[0].classList.remove('placardExpanded');
+            var x=document.getElementById('overlay2');
+            x.classList.remove("overlay2");
+        }
         document.addEventListener('DOMContentLoaded', function() {
             function moving_lines()
             {
@@ -168,67 +319,33 @@
                 }
                 setTimeout(function(){moving_lines()},30000);
             }          
-            moving_lines();  
-            // console.log(document.getElementById('TopBar'));
+            moving_lines();
+            const skills=[
+                {
+                    skillName:"C/C++",
+                    progress:60
+                },
+                {
+                    skillName:"Python",
+                    progress:60
+                }
+            ];
+            function addSkill(element)
+            {
+                const container=document.getElementById('skillsRight');
+                const innerContainer=document.createElement('div');
+                const name=document.createElement('label');
+                const bar=document.createElement('progress');
+                bar.value=element.progress;
+                bar.max=100;
+                name.innerText=element.skillName;
+                name.style.color="white";
+                innerContainer.appendChild(name);
+                innerContainer.appendChild(bar);
+                container.appendChild(innerContainer);
+            }  
+            skills.forEach(addSkill);            
         });
     </script>
 </body>
 </html>
-<!-- <!DOCTYPE html>
-<html>
-    <head>
-        <title> learning again </title>
-    </head>
-    <body>
-        <h1 id="Time"></h1>
-        <h1 id="check"></h1>
-        <img src="download.jpeg" height=144px width =144px id="placard" onmouseenter="placard()" onmouseleave="placard_end()"></img>
-        <button onclick="abcd()">checking</button>
-        <div id="doc_data"></div>
-    </body>
-    <script type="text/javascript">
-        // var name = prompt("Enter your Name","Mine is Roboya");
-        // document.write("<h1>"+name+"</h1>");
-        function displayTime()
-        {
-            var date = new Date();
-            document.getElementById('Time').innerText=date;
-            setInterval(function(){displayTime()},1000);
-        }
-        displayTime();
-        function abcd() 
-        {
-            document.getElementById('check').innerText=prompt("Write Something")
-        }
-        function placard()
-        {
-            document.getElementById('placard').src="d_2.jpeg";
-            document.getElementById('placard').width=240;
-            document.getElementById('placard').height=240;
-        }
-        function placard_end()
-        {
-            document.getElementById('placard').src="download.jpeg";
-            document.getElementById('placard').width=144;
-            document.getElementById('placard').height=144;
-        }
-        const fileID = '14F0426-KtdeU8dUwfSVIoU_R9IIzJkkLd-hE7I02kDc';
-        const apiKey = 'AIzaSyDsPuuKihR5mudzNypCmv07DBae-t3B5Go';
-
-        const url = 
-        `https://www.googleapis.com/drive/v3/files/${fileID}/export?mimeType=text/plain&key=${apiKey}`;
-
-        fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            // const newWindow = window.open();
-            // newWindow.document.write(`<pre>${data}</pre>`);
-            document.getElementById('doc_data').innerText=data;
-        })
-        .catch(error => {
-            console.error('Error fetching file:', error);
-        });
-
-
-    </script>
-</html> -->

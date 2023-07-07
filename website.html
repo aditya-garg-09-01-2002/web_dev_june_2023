@@ -3,148 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bio.css">
+    <link rel="stylesheet" href="skills.css">
+    <link rel="stylesheet" href="topBar.css">
+    <link rel="stylesheet" href="project.css">
     <style>
-        #navbar{
-            height:70px;
-            position:relative;
-        }
-        #TopBar{
-            overflow: hidden;
-            background-color: #ffc56e;
-            position: relative;
-            top: 0px;
-            width: 100%;
-            height:100%;
-            padding:0px;
-            /* opacity:0%; */
-            /* background-color:orange; */
-            /* display:flex; */
-            /* align-items: flex-start; */
-        }
-        #overlay{
-            background-color: none;
-            z-index:1;
-            height:100%;
-            /* left:60%; */
-            width:100%;
-            top:35%;
-            position:absolute;
-        }
-        .overlayButton{
-            float:right;
-            background-color:none;
-            background: none;
-            font-size: 20px;
-            width:auto;
-            border:none;
-            margin-right:1%;
-
-        }
-        .overlayButton a{
-            color:white;
-            font-weight:bold;
-            text-decoration: none;
-            text-shadow:1px 1px black;
-        }
-        .overlayButton a:visited{
-            color:white;
-            font-weight:bold;
-            text-decoration: none;
-            text-shadow:1px 1px black;
-        }
-        body{
-            padding : 0px;
-            margin:0px;
-        }
-        .Line {
-            margin:0px;
-            width: 50px;
-            display: inline-block;
-            vertical-align:top;
-            height: 2px;
-            left:0px;
-            background-color: #ffde4f;
-            position: relative;
-            animation-fill-mode: forwards;
-            animation: moveLine 5s linear infinite;
-            opacity:75%;
-        }
-
-        @keyframes moveLine {
-            /* 0% {
-                left: 0px;
-            } */
-            100% {
-                transform:translatex(100vw);
-                /* left :calc(100% - 50px); */
-            }
-        }
-        #bio{
-            width:100%;
-            height:80vh;
-            margin:0px;
-            padding:0px;
-        }
-        #bioLeft{
-            background-color:blue;
-            width:40%;
-            height:100%;
-            margin:0px;
-            border:0px;
-            /* position:absolute; */
-            float:left;
-        }
-        #bioRight{
-            background-color:purple;
-            width:60%;
-            height:100%;
-            margin:0px;
-            border:0px;
-            float:left;
-            
-        }
-        @media screen and (max-width: 800px) {
-            #bioRight{
-                width:100%;
-            }
-            #bioLeft{
-                width:0%;
-            }
-            .overlayButton{
-                width:100%;
-            }
-            #navbar{
-                height:150px;
-            }
-            #overlay{
-                top:10%;
-            }
-            .overlayButton{
-                margin: 0.5% 0.5% 0.5% 0.5%;
-            }
-        }
+        
     </style>
 </head>
 <body>
+    <div id="overlay2"></div>
     <div id="navbar">
         <div id="TopBar">
             
         </div>
         <nav id="overlay">
-            <button class="overlayButton"><a href="#" >Skills</a></button>
-            <button class="overlayButton"><a href="#" >Projects</a></button>
-            <button class="overlayButton"><a href="#" >Social Media</a></button>
             <button class="overlayButton"><a href="#" >About Me</a></button>
+            <button class="overlayButton"><a href="#" >Social Media</a></button>
+            <button class="overlayButton"><a href="#" >Projects</a></button>
+            <button class="overlayButton"><a href="#" >Skills</a></button>
         </nav>
-        <div id="bio"> 
-            <div id="bioLeft"></div>
-            <div id="bioRight">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore, corrupti voluptas facere aliquam eaque explicabo velit aliquid deserunt ipsum harum, cumque, amet eos adipisci molestias modi. Cum adipisci fuga dolor!
+    </div>
+    <div id="bio"> 
+        <div id="bioLeft"></div>
+        <div id="bioRight">
+            <div id = "bioContent">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio esse sapiente, eaque laboriosam voluptates eligendi minus enim expedita porro exercitationem eius omnis cum nulla adipisci quasi ipsum impedit atque commodi!
             </div>
         </div>
     </div>
-    <!-- <div id="checker">asa</div> -->
+    <div id="skills">
+        <div id="skillsLeft">Skills</div>
+        <div id="skillsRight">
+        </div>
+    </div>
+    <div id="projects">
+        <div class="project">
+            <div class="projectLeft">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor adipisci iure nulla accusamus, cumque culpa sequi, eos totam necessitatibus dicta libero deserunt consequuntur expedita. Impedit, sed accusamus. Pariatur, soluta 
+            </div>
+            <div class="projectRight" onmouseenter="fun1()">
+                <iframe src="https://www.youtube.com/embed/gQdrBmnemHY?rel=0" allowfullscreen class="placard"  onmouseleave="fun2()"></iframe>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
+        function fun1()
+        {
+            document.getElementsByClassName('placard')[0].classList.add('placardExpanded');
+            var x=document.getElementById('overlay2');
+            x.classList.add("overlay2");
+        }
+        function fun2()
+        {
+            document.getElementsByClassName('placard')[0].classList.remove('placardExpanded');
+            var x=document.getElementById('overlay2');
+            x.classList.remove("overlay2");
+        }
         document.addEventListener('DOMContentLoaded', function() {
             function moving_lines()
             {
@@ -168,8 +82,32 @@
                 }
                 setTimeout(function(){moving_lines()},30000);
             }          
-            moving_lines();  
-            // console.log(document.getElementById('TopBar'));
+            moving_lines();
+            const skills=[
+                {
+                    skillName:"C/C++",
+                    progress:60
+                },
+                {
+                    skillName:"Python",
+                    progress:60
+                }
+            ];
+            function addSkill(element)
+            {
+                const container=document.getElementById('skillsRight');
+                const innerContainer=document.createElement('div');
+                const name=document.createElement('label');
+                const bar=document.createElement('progress');
+                bar.value=element.progress;
+                bar.max=100;
+                name.innerText=element.skillName;
+                name.style.color="white";
+                innerContainer.appendChild(name);
+                innerContainer.appendChild(bar);
+                container.appendChild(innerContainer);
+            }  
+            skills.forEach(addSkill);            
         });
     </script>
 </body>
