@@ -176,6 +176,16 @@
             animation: moveLine 5s linear infinite;
             opacity:75%;
         }
+        .Line::after{
+            background-color:white;
+            width:8px;
+            height:8px;
+            border-radius:4px;
+            position:absolute;
+            content:' ';
+            top:-3px;
+            right:0px;
+        }
         @keyframes moveLine {
             /* 0% {
                 left: 0px;
@@ -354,7 +364,7 @@
                 const lineContainer = document.getElementById('TopBar');
                 lineContainer.innerHTML='';
                 // alert(lineContainer.clientHeight);
-                for(var j=0;j<lineContainer.clientHeight/10;j++)
+                for(var j=0;j<lineContainer.clientHeight/20;j++)
                 {
                     var x=Math.random(0,1)*10
                     for( var i=0;i<25;i++)
